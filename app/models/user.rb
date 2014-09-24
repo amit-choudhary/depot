@@ -8,6 +8,7 @@
 #---
 class User < ActiveRecord::Base
   has_many :ratings
+  #fix - rename :rated_products
   has_many :products, through: :ratings
   validates :name, presence: true, uniqueness: true
   has_secure_password

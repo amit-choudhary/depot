@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  
+  #fix - use seperate actions for respective task
   def update
     @rating = Rating.where(product_id: params[:product_id], user_id: session[:user_id])
     if @rating.blank?
