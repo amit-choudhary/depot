@@ -7,6 +7,8 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 class User < ActiveRecord::Base
+  has_many :ratings
+  has_many :products, through: :ratings
   validates :name, presence: true, uniqueness: true
   has_secure_password
 

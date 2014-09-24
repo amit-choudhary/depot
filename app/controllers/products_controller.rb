@@ -1,4 +1,4 @@
-#---
+# ---
 # Excerpted from "Agile Web Development with Rails",
 # published by The Pragmatic Bookshelf.
 # Copyrights apply to this code. It may not be used to create training material, 
@@ -27,6 +27,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+  end
+
+  def average_rating
+    ratings.sum(:score) / ratings.size
   end
 
   # POST /products
