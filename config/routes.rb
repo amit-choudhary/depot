@@ -20,11 +20,11 @@ Depot::Application.routes.draw do
   resources :orders
   resources :line_items
   resources :carts
-  resource :rating
 
   get "store/index"
   resources :products do
     get :who_bought, on: :member
+    resource :rating
   end
 
   # The priority is based upon order of creation:

@@ -18,8 +18,8 @@
         data: { confirm: 'Are you sure?' } %>
       </td>
       <td>
-        <%= select_tag(product.title, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), {:class => 'rating_section', remote: true, :data => product.id}) %>
-        <p class='average-rating'>Average Rating: </p>
+        <%= select_tag(product.title, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]], selected: product.rating(product.id, session[:user_id])), {:class => 'rating_section', remote: true, :data => product.id, :'data-rating' => product.rating(product.id, session[:user_id])}) %>
+        <p class='<%= product.id %>'>Average Rating: <%= product.average_rating %></p>
       </td>
     </tr>
   <% end %>

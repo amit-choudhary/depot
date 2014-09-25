@@ -1,0 +1,1 @@
+$('.<%= @rating.product_id %>').html('Average Rating: ' + '<%= Product.where(id: @rating.product_id).first.average_rating %>')

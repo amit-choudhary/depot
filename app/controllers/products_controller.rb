@@ -29,10 +29,6 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  def average_rating
-    ratings.sum(:score) / ratings.size
-  end
-
   # POST /products
   # POST /products.json
   def create

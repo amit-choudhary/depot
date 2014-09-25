@@ -19,14 +19,30 @@
 //= require_tree .
 $(function() {
 $('.rating_section').change(function() {
-  var productID= $(this).attr('data');
-  var selectedValue = $(this).val();
-  // var averageObject = $('.average-section')
+  var productID = $(this).attr('data'),
+      requestType = '',
+      urlString = ''
+      selectedValue = $(this).val();
+  if ($(this).attr('data-rating') == undefined && selectedValue > 0 || $(this).attr('data-rating') == 0 && selectedValue > 0) {
+    requestType = 'POST';
+    urlString = '/products/' + productID + '/rating';
+    $(this).attr('data-rating', selectedValue);
+  } 
+  else if(selectedValue > 0) {
+    requestType = 'PUT';
+    urlString = '/products/' + productID + '/rating';
+    $(this).attr('data-rating', selectedValue)
+  }
+  else if(selectedValue == 0) {
+    requestType = 'DELETE';
+    urlString = '/products/' + productID + '/rating';
+    $(this).attr('data-rating', selectedValue)
+  }
   $.ajax({
-    type: 'PUT',
+    type: requestType,
     data: '&product_id=' + productID + '&value=' + selectedValue,
-    url: '/rating',
+    url: urlString,
     cache: true,
   } ); 
-});
-})
+} );
+} )
